@@ -1,0 +1,84 @@
+\documentclass{htresume}
+\begin{document}
+
+% HEADER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.4\textwidth}
+\vspace{-\baselineskip}
+\firstlastname{Henry To}
+\end{minipage}
+\begin{minipage}[t]{0.25\textwidth}
+\vspace{-\baselineskip}
+\contactinfo{\phonenumber{555}{555}{5555}}{\emailaddress{hello@henry.to}}
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\vspace{-\baselineskip}
+\contactinfo{\website{linkedin.com/in/rakukojin}{Linkedin}}{\website{github.com/henrito}{Github}}
+\end{minipage}
+\vspace{6pt}
+
+% EDUCATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\coloredsection{Education}
+\degreeitemize{\href{https://uci.edu}{University of California Irvine}}{
+  \degreeitem{2017}{B.S. Computer Science}{awarded with a specialization in Architecture and Embedded Systems}
+  \degreeitem{2011}{B.A. Japanese Language and Literature}{}
+}
+
+% WORK EXPERIENCE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\coloredsection{Work Experience}
+\freelancingexperience{2017}{Present}{{Freelance Developer}\dotdivider{Freelance QA Tester}}
+\begin{itemize}[noitemsep]
+  \item Designed and implemented Shopify/Squarespace UI/UX to better showcase clients' products.
+  \item Ensured game titles complied with Sony's TRC and Microsoft's TCR certification standards.
+\end{itemize}
+\workexperience{2012}{2016}{QA Project Lead}{\href{http://digitalheartsusa.com}{DIGITAL Hearts USA Inc.}}
+\begin{itemize}[noitemsep]
+  \item Tested dozens of successfully shipped titles from clients such as Namco, Square-Enix, Capcom, Atlus, etc.
+  \item Coordinated multiple teams of testers and trained senior testers to become successful project leads.
+  \item Developed and maintained reusable test plans and documentation to efficiently meet clients' requirements.
+\end{itemize}
+\workexperience{2013}{2014}{Mobile QA Tester}{\href{https://nexonm.com}{Nexon M Inc.}}
+\begin{itemize}[noitemsep]
+  \item Provided essential feedback early in development, leading to significant improvements to overall gameplay.
+  \item Assisted in the creation of test plans to be used on all future Nexon M game titles.
+\end{itemize}
+
+% SKILLS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.5\textwidth}
+\coloredsection{Proficient Languages}
+\skillitemize{5em}{
+  \skillitem{Proficient}{{C}\dotdivider{C++}}
+}
+\coloredsection{Familiar Languages}
+\skillitemize{4.5em}{
+  \skillitem{Coding}{{Java}\dotdivider{VHDL}}
+  \skillitem{Scripting}{{Python}\dotdivider{Ruby}\dotdivider{JavaScript}}
+  \skillitem{Markup}{{HTML}\dotdivider{CSS}\dotdivider{LaTeX}}
+  \skillitem{Shader}{GLSL}
+}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\coloredsection{Non-Technical Skills}
+\skillitemize{5.5em}{
+  \skillitem{Languages}{{English}\dotdivider{Chinese (Teochew)}\dotdivider{Japanese}}
+}
+\coloredsection{Technical Skills}
+\skillitemize{8em}{
+  \skillitem{Frameworks}{{Cocoa}\dotdivider{Win32}\dotdivider{Xlib}\dotdivider{OpenGL}}
+  \skillitem{Microcontrollers}{{AVR}\dotdivider{ESP8266}\dotdivider{MSP430}}
+  \skillitem{Tools}{{JIRA}\dotdivider{Git}\dotdivider{GCC}\dotdivider{LLVM}\dotdivider{Valgrind}}
+}
+\end{minipage}
+
+% PROJECTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\coloredsection{Projects}
+\projectitemize{
+  \projectitem{OpenGL windowing library}{Manages the creation/destruction of OpenGL Windows on macOS, Windows and Linux.}
+  \projectitem{SSD1531 graphics library}{Supports tile-based sprites and scrolling backgrounds using an ESP8266.}
+  \projectitem{Predefined C macro library}{Identifies architectures, compilers, platforms and standards at compile time.}
+  \projectitem{IFF/ILBM parser library}{Supports parsing/reading/writing/compression/decompression of IFF/ILBM chunks.}
+  \projectitem{WS8211 LED rave totem}{Controls WS8211 LED strips with an ATTiny85 to display various animations.}
+  \projectitem{Obstacle avoidance robot}{Arduino-based 4-wheeled robot utilizing an HC-SR04 sensor to avoid obstacles.}
+  \projectitem{MIPS processor in VHDL}{Implementation of a processor that can execute a subset of MIPS ISA.}
+}
+
+\end{document}
