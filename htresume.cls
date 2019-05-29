@@ -1,125 +1,109 @@
-% CLASS CONFIG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuration
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{htresume}[2019/02/22 htresume]
+\ProvidesClass{htresume}[2019/05/29 htresume]
 \LoadClass{extarticle}
 \setlength{\parindent}{0mm}
 \pagenumbering{gobble}
 
-% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dependencies
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[sfdefault,light]{FiraSans}
-\RequirePackage[T1]{fontenc}
-\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
-\RequirePackage[paper=a4,margin=2cm]{geometry}
-\RequirePackage{titlesec}
-\RequirePackage{titling}
 \RequirePackage[usenames, dvipsnames]{color}
 \RequirePackage{enumitem}
-\RequirePackage{anyfontsize}
-\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[sfdefault,light]{FiraSans}
 \RequirePackage{fontawesome}
+\RequirePackage[letterpaper,margin=2cm]{geometry}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{scrextend}
 
-% SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titleformat{\section}
-{\bfseries}
-{}
-{0em}
-{}
-
-% SUBSECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titleformat{\subsection}
-{\LARGE\bfseries\scshape}
-{}
-{0em}
-{}
-
-% SUBSUBSECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titleformat{\subsubsection}[runin]
-{}
-{}
-{0em}
-{}
-
-% FONT AWESOME %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\boxedicon}[5]{
-  \vcenteredhbox{\colorbox{#3}{\makebox({#2},{#2}){\textcolor{#4}{\large\csname fa#1\endcsname}}}}\hspace{0.25cm}\vcenteredhbox{\textcolor{#3}{#5}}
+% Header macro
+\newcommand{\header}[6]{
+  \begin{minipage}[t]{0.4\textwidth}
+    \vspace{-\baselineskip}
+    \href{https://#2}{\fontsize{40}{\baselineskip}\selectfont\textbf{\MakeUppercase{#1}}}
+  \end{minipage}
+  \begin{minipage}[t]{0.25\textwidth}
+    \boxedicon{PaperPlane}{\href{mailto:#4}{#4}}
+    \boxedicon{Github}{\href{https://github.com/#6}{github.com/henrito}}
+  \end{minipage}
+  \begin{minipage}[t]{0.3\textwidth}
+    \boxedicon{Phone}{\href{tel:#3}{#3}}
+    \boxedicon{Linkedin}{\href{https://linkedin.com/in/#5}{linkedin.com/in/#5}}
+  \end{minipage}
+  \vspace{3\baselineskip}
 }
 
-% FIRST LAST NAME %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\firstlastname}[1]{
-  \fontsize{40}{\baselineskip}\selectfont\textbf{\MakeUppercase{#1}}
+% Section macro
+\newcommand{\boxedsection}[1]{
+  \colorbox{black}{\textcolor{white}{\Large\scshape\textbf{#1}}}
 }
 
-% CONTACT INFO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\contactinfo}[2]{
+% Education macros
+\newcommand{\educationitemize}[2]{
+  \par\vspace{\baselineskip}\textbf{#1}
   \begin{itemize}[noitemsep]
-  \item[]{#1}
-  \item[]{#2}
+    #2
   \end{itemize}
 }
 
-\newcommand{\phonenumber}[3]{
-  \boxedicon{Phone}{8}{black}{white}{\fontsize{11}{\baselineskip}\selectfont{#1}\hspace{2mm}{#2}\hspace{2mm}{#3}}
+\newcommand{\educationitem}[3]{
+  \item[#1]{\textbf{#2} #3}
 }
 
-\newcommand{\emailaddress}[1]{
-  \boxedicon{At}{8}{black}{white}{\fontsize{10}{\baselineskip}\selectfont{\href{mailto:#1}{#1}}}
+% Work experience macros
+\newcommand{\workitemize}[1]{
+  \begin{labeling}{Present - Present}
+    #1
+  \end{labeling}
+  \vspace{0.25\baselineskip}
 }
 
-\newcommand{\website}[2]{
-  \boxedicon{#2}{8}{black}{white}{\fontsize{10}{\baselineskip}\selectfont{\href{https://#1}{#1}}}
-}
-
-% COLORED SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\coloredsection}[1]{
-  \subsection{\colorbox{black}{\textcolor{white}{#1}}}
-}
-
-% WORK EXPERIENCE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\workexperience}[4]{
-  \begin{tabular}{ll}
-  \large{{#1}\dotdivider{#2}} & \large{\textbf{#3} at \textbf{#4}}
-  \end{tabular}
-}
-
-\newcommand{\freelancingexperience}[3]{
-  \begin{tabular}{ll}
-  \large{{#1}\dotdivider{#2}} & \large\textbf{#3}
-  \end{tabular}
-}
-
-% DEGREE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\degreeitemize}[2]{
-  \textbf{\large{#1}}
-  \begin{itemize}[noitemsep]
-  {#2}
+\newcommand{\workitem}[5]{
+  \item[#1 - #2] \textbf{#3} at \textbf{#4}
+  \begin{itemize}[leftmargin=-5.75em,noitemsep]
+    #5
   \end{itemize}
 }
 
-\newcommand{\degreeitem}[3]{
-  \item[#1]{\textbf{#2} {#3}}
+\newcommand{\freelanceitem}[4]{
+  \item[#1 - #2] \textbf{#3}
+  \begin{itemize}[leftmargin=-5.75em,noitemsep]
+    #4
+  \end{itemize}
 }
 
-% SKILLS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Skill macros
+\newcommand{\skills}[2]{
+  \begin{minipage}[t]{0.475\textwidth}
+    #1
+  \end{minipage}
+  \begin{minipage}[t]{0.475\textwidth}
+    #2
+  \end{minipage}
+  \vspace{\baselineskip}
+}
+
 \newcommand{\skillitemize}[2]{
-  \begin{itemize}[leftmargin={#1},noitemsep]
-  {#2}
+  \begin{itemize}[leftmargin=#1,noitemsep]
+  #2
   \end{itemize}
 }
 
 \newcommand{\skillitem}[2]{
-  \item[\textbf{#1}]{#2}
+  \item[\textbf{#1}]#2
 }
 
-% PROJECTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Project macros
 \newcommand{\projectitemize}[1]{
-  \begin{itemize}[leftmargin=12.5em,noitemsep]
-  {#1}
+  \begin{itemize}[leftmargin=12.75em,noitemsep]
+  #1
   \end{itemize}
 }
 
 \newcommand{\projectitem}[2]{
-  \item[\textbf{#1}]{#2}
+  \item[\textbf{#1}]#2
 }
-% FORMATTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\dotdivider}{\hspace{2mm}·\hspace{2mm}}
+
+% Font Awesome macros
+\newcommand{\boxedicon}[2]{
+  \colorbox{black}{\makebox(8,8){\textcolor{white}{\large\csname fa#1\endcsname}}}\hspace{0.25cm}\textcolor{black}{#2}\par
+}
